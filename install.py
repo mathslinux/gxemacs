@@ -12,6 +12,12 @@ Have fun!
 
 import getopt
 
+class Python
+
+class MyConfig:
+    def __init__(self):
+        pass
+
 if __name__ == '__main__':
     try:
         opts, args = getopt.getopt(sys.argv[1:], "hcap", ["help", "config", "build-all", "build-path"])
