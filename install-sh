@@ -1,0 +1,4 @@
+all: c-program
+
+c-program:
+	$echo "Dont forget doxygen"
