@@ -5,7 +5,7 @@
  
 ;; 主題設置
 (require 'color-theme)
-(load-file (concat ui-config-path "/color-theme-blackboard.el"))
+(load "color-theme-blackboard.el")
 (color-theme-blackboard)
 
 ;; 顯示行號和列號

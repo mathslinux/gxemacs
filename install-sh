@@ -1,4 +1,40 @@
-all: c-program
+#!/bin/sh
+# Time-stamp: <2011-08-20-10:53:27 by mathslinux>
 
-c-program:
-	$echo "Dont forget doxygen"
+################################################################################
+# @file   install-sh
+# @author geniux <riegamaths@gmail.com>
+# @date   2011年 08月 20日 星期六 10:18:43 CST
+
+# @brief  Install script for this app
+################################################################################
+
+CONFIG_FILE=$HOME/.emacs
+CONFIG_DIR=$HOME/.emacs.d
+SITE_LISP_PATH=$CONFIG_DIR/site-lisp
+MY_LISP_PATH=$CONFIG_DIR/my-lisp
+APP_PATH=$CONFIG_DIR/app
+
+# Back up the old emacs config directory if have. Create directory we need
+if [ -d $CONFIG_DIR ]; then
+    echo "Backup $CONFIG_DIR"
+    mv $CONFIG_DIR $CONFIG_DIR-bakup
+fi
+mkdir -p $SITE_LISP_PATH
+mkdir -p $MY_LISP_PATH
+mkdir -p $APP_PATH
+
+# Install site lisp and my lisp
+echo "Copy pkg's lisp files to config directory"
+cp  pkg/*.el $SITE_LISP_PATH
+
+echo "Copy all my files to config directory"
+cp -r my-lisp/* $MY_LISP_PATH
+
+# Copy the .emacs initial file to install directory, if there is a .emacs
+# already, back up the old .emacs
+if [ -f $CONFIG_FILE ]; then
+    echo "Backup $CONFIG_FILE"
+    mv $CONFIG_FILE $CONFIG_FILE-bakup
+fi
+cp emacs.conf $CONFIG_FILE
