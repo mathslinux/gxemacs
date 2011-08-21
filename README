@@ -1,0 +1,20 @@
+This is my emacs config app. 
+
+* Install
+Just excute a command
+#+begin_src sh
+$ ./install-sh
+#+end_src
+
+* FAQ
+** How to add a new emacs config
+Put your elisp file to my-lisp directory, remove the file to SXXXfilename.el, 
+if you want add two or more files, e.g. a.el and b.el, b.el depends a.el, 
+you must rename a.el and b.el like this: SXXXa.el SMMMb.el, which XXX, MMM 
+is a int number, and XXX is small than MMM.
+
+** What's the naming rule of file in my-lisp directory
+Emacs config file(.emacs) will load all files whose name like SXXXfilename.el. 
+The order of loading depends the number in name. e.g S129a.el will be
+load earlier than S130b.el. key map config file whose name is S130b.el
+will be loaded at the end.

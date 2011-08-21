@@ -1,9 +1,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-;; Time-stamp: <2011-05-16-21:40:05 星期一 by geniux>
+;; Time-stamp: <2011-08-21-23:51:25 星期日 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- 
-;; 主題設置
+
+;; Font setting
+;; Setting english font
+(set-face-attribute 
+ 'default nil :family "Monaco" :slant 'normal :weight 'normal :height 120 :width 'normal)
+
+;; Setting chinese font
+(set-fontset-font
+    (frame-parameter nil 'font)
+    'han
+    (font-spec :family "微软雅黑" :slant 'normal :weight 'normal :width 'normal :size 16))
+
+
+;; Theme setting
 (require 'color-theme)
 (load "color-theme-blackboard.el")
 (color-theme-blackboard)
@@ -16,3 +28,5 @@
 ;; 顯示標籤
 (require 'tabbar)
 (tabbar-mode t)
+
+(tool-bar-mode)
