@@ -7,44 +7,36 @@
 ;; Init - 主要是一些自定义的变量的初始化, 配置文件的路径的設定.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; 設置默認配置文件的頂層目錄 
+;; 設置默認配置文件的頂層目錄
 (defconst emacs-config-path "~/.emacs.d/" "emacs配置文件的路径")
 
 ;; 添加兩個存放配置文件的目錄, lisp 存放網路上下載的 lisp 程序,
-;; my-lisp 存放 geniux 自己寫的 lisp 程序
-;; my-common 存放 网上下载的单个文件
-(defconst site-lisp-path (concat emacs-config-path "site-lisp/") "emacs配置文件的路径")
-(defconst apps-path (concat emacs-config-path "my-app/") "非lisp程序路径")
-(defconst my-lisp-path (concat emacs-config-path "my-lisp/") "emacs配置文件的路径")
-(defconst my-lisp-common (concat my-lisp-path "my-common/") "公共文件")
-(add-to-list 'load-path lisp-path)
-(add-to-list 'load-path my-lisp-path)
-(add-to-list 'load-path my-lisp-common)
-
-
-;; Load all files in my-lisp-path.
-(setq load-files (directory-files my-lisp-path t "\\.el$"))
-(if load-files
-    (mapc 'load load-files)
-  (print "No file to be load"))
+;; gx-lisp 存放 geniux 自己寫的 lisp 程序
+;; gx-common 存放 网上下载的单个文件
+(defconst lisps-path (concat emacs-config-path "lisps/") "emacs配置文件的路径")
+(defconst gx-lisps-path (concat emacs-config-path "gx-lisps/") "emacs配置文件的路径")
+(defconst gx-lisps-common (concat gx-lisps-path "gx-common/") "公共文件")
+(add-to-list 'load-path lisps-path)
+(add-to-list 'load-path gx-lisps-path)
+(add-to-list 'load-path gx-lisps-common)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI - 主題, 字體等的設置
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defconst ui-config-path (concat my-lisp-path "my-ui/") "整個 UI 設置的路徑")
+(defconst ui-config-path (concat gx-lisps-path "gx-ui/") "整個 UI 設置的路徑")
 (add-to-list 'load-path ui-config-path)
-(load "my-ui")
+(load "gx-ui")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 编辑设置
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "my-highlight-symbol")
+(load "gx-highlight-symbol")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 快捷鍵設置
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "my-keymap")
+(load "gx-keymap")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dev - 編程開發的設置
@@ -54,14 +46,14 @@
 ;; need sourcepair.el
 ;; Todo: yaourt -S cscope(ubuntu: apt-get install cscope)
 ;; need xscope
-(load "my-c")
+(load "gx-c")
 
 ;; Auto-complete setting
 ;; Todo: 
 ;; 1: 解壓 auto-complete-*.tar.bz2 到任何目錄
-;; 2. cd auto-complete-* && make install DIR=$HOME/.emacs.d/lisp/auto-complete
+;; 2. cd auto-complete-* && make install DIR=$HOME/.emacs.d/lisps/auto-complete
 ;; 3. 加入類似 
-(load "my-auto-complete")
+(load "gx-auto-complete")
 
 
 ;; python mode
@@ -75,14 +67,14 @@
 ;; sudo easy_install ropemacs
 ;; sudo apt-get install pymacs(yaourt -S pymacs)
 ;; 不要使用python3
-(load "my-python")
+(load "gx-python")
 
 ;; cedet setting
-(load "my-cedet")
+(load "gx-cedet")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zhuangbility mode
-(load "my-pulse")
+(load "gx-pulse")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -124,8 +116,8 @@
 
 ;; jabber 0.8
 ;; apt-get install emacs-jabber
-;; ./configure --prefix=$HOME/.emacs.d/lisp/jabber; make && make install
-(add-to-list 'load-path (concat lisp-path "jabber/share/emacs/site-lisp/"))
+;; ./configure --prefix=$HOME/.emacs.d/lisps/jabber; make && make install
+(add-to-list 'load-path (concat lisps-path "jabber/share/emacs/site-lisp/"))
 (load "jabber-autoloads")
 (setq jabber-account-list
       '(("riegamaths@gmail.com"
@@ -133,14 +125,14 @@
          (:connection-type . ssl))))
 
 ;; custom  設置
-(load "my-custom")
+(load "gx-custom")
 
 ;; yasnippet
-;; 解压 yasnippet 到 ~/.emacs.d/lisp
-(load "my-yasnippet")
+;; 解压 yasnippet 到 ~/.emacs.d/lisps
+(load "gx-yasnippet")
 
 ;; 保留菜单的配置
-(setq custom-file "~/.emacs.d/my-lisp/my-custom.el")
+(setq custom-file "~/.emacs.d/gx-lisps/gx-custom.el")
 
 ;; 询问时不用 yes or no,用 y/n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -205,27 +197,27 @@
 ;; Todo: pacman -S cedet
 ;; (load-file "/usr/share/emacs/site-lisp/cedet/common/cedet.el")
 
-;; (setq user-mail-address "riegamaths@gmail.com")
-;; (setq user-full-name "mathslinux")
-;; (load-library "smtpmail")
-;; (load-library "nnimap")
-;; (load-library "starttls")
-;; (setq gnus-select-method '(nnimap "imap.gmail.com"
-;; 								   (nnimap-address "imap.gmail.com")
-;; 								   (nnimap-server-port 993)
-;; 								   (nnimap-authinfo-file "~/.imap-authinfo")
-;; 								   (nnimap-stream ssl)))
+(setq user-mail-address "riegamaths@gmail.com")
+(setq user-full-name "mathslinux")
+(load-library "smtpmail")
+(load-library "nnimap")
+(load-library "starttls")
+(setq gnus-select-method '(nnimap "imap.gmail.com"
+								   (nnimap-address "imap.gmail.com")
+								   (nnimap-server-port 993)
+								   (nnimap-authinfo-file "~/.imap-authinfo")
+								   (nnimap-stream ssl)))
 
-;; (setq smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-;; 	  smtpmail-smtp-server "smtp.gmail.com"
-;; 	  smtpmail-default-smtp-server "smtp.gmail.com"
-;; 	  send-mail-function 'smtpmail-send-it
-;; 	  message-send-mail-function 'smtpmail-send-it
-;; 	  smtpmail-smtp-service 587
-;; 	  smtpmail-auth-credentials '(("smtp.gmail.com"
-;; 									587
-;; 									"riegamaths@gmail.com"
-;; 									nil)))
+(setq smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+	  smtpmail-smtp-server "smtp.gmail.com"
+	  smtpmail-default-smtp-server "smtp.gmail.com"
+	  send-mail-function 'smtpmail-send-it
+	  message-send-mail-function 'smtpmail-send-it
+	  smtpmail-smtp-service 587
+	  smtpmail-auth-credentials '(("smtp.gmail.com"
+									587
+									"riegamaths@gmail.com"
+									nil)))
 
 
 ;; emms
@@ -306,21 +298,13 @@
 ;; ecb
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/ecb")
 (require 'ecb)
-(defun my-ecb ()
+(defun gx-ecb ()
   "启动ecb"
   (interactive)
   (setq ecb-tip-of-the-day nil)
   (ecb-activate))
   (ecb-layout-switch "left2")
-(my-ecb)
-
-;; edict
-(require 'edict)
-(setq edict-apps-dir (concat my-apps-path "edict/"))
-(setq edict-engine "google") 
-(setq edict-from-lang "en")
-(setq edict-to-lang "zh")
-(global-set-key (kbd "<f10>") 'edict)
+(gx-ecb)
 
 ;; twitter
 (require 'epa-file)
@@ -345,14 +329,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Config for experiment
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "my-experiment")
+(load "gx-experiment")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Desktop and session setting
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defconst desktop-config-path (concat my-lisps-path "my-desktop/") "整個 desktop 設置的路徑")
+(defconst desktop-config-path (concat gx-lisps-path "gx-desktop/") "整個 desktop 設置的路徑")
 (add-to-list 'load-path desktop-config-path)
-(load "my-desktop")
+(load "gx-desktop")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
