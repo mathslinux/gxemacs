@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2011-08-22-15:28:32 by mathslinux>
+# Time-stamp: <2011-08-22-23:50:01 星期一 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -93,6 +93,43 @@ if [ -f $TARGET_CONFIG_FILE ]; then
     mv $TARGET_CONFIG_FILE $TARGET_CONFIG_FILE-bakup
 fi
 cp $CONFIG_FILE $TARGET_CONFIG_FILE
+
+################################################################################
+# Install cscope
+CSCOPE_VERSION=15.7a
+which cscope 2> /dev/null > /dev/null
+if [ $? -ne 0 ]; then
+	tar xfj $PKG_PATH/cscope-$CSCOPE_VERSION.tar.bz2 -C /tmp
+	cd /tmp/cscope-$CSCOPE_VERSION
+	./configure --prefix=/usr --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --mandir=/usr/share/man --infodir=/usr/share/info --datadir=/usr/share --sysconfdir=/etc --localstatedir=/var/lib
+	[ $? -eq 0 ] || exit 1
+	make && sudo make install
+	cp -f contrib/xcscope/xcscope.el $TARGET_SITE_LISP_PATH
+	sudo cp -f contrib/xcscope/cscope-indexer $TARGET_SITE_LISP_PATH /bin
+fi
+
+################################################################################
+# Install ibus.el to solove the bug that emacs cant use ibus
+echo "import sys" >> $TOP_PATH/xlib_test.py
+echo "try:" >> $TOP_PATH/xlib_test.py
+echo "    import Xlib" >> $TOP_PATH/xlib_test.py
+echo "    sys.exit(0)" >> $TOP_PATH/xlib_test.py
+echo "except ImportError:" >> $TOP_PATH/xlib_test.py
+echo "    sys.exit(1)" >> $TOP_PATH/xlib_test.py
+
+python $TOP_PATH/xlib_test.py
+if [ $? -ne 0 ]; then
+	echo "python-xlib is not install, please install it, like sudo emerge python-xlib"
+	echo "!!!!!! Exit"
+	rm -f $TOP_PATH/xlib_test.py
+	exit 1
+fi
+rm -f $TOP_PATH/xlib_test.py
+
+IBUS_EL_VERSION=0.2.1
+tar xfz $PKG_PATH/ibus-el-$IBUS_EL_VERSION.tar.gz -C /tmp
+cp -f /tmp/ibus-el-$IBUS_EL_VERSION/ibus-el-agent $TARGET_SITE_LISP_PATH
+cp -f /tmp/ibus-el-$IBUS_EL_VERSION/ibus.el $TARGET_SITE_LISP_PATH
 
 ################################################################################
 # Install yasnippet
