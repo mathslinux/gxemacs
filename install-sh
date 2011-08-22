@@ -201,7 +201,7 @@ cp -dr $PKG_PATH/emms $TARGET_SITE_LISP_PATH/emms
 
 ################################################################################
 # Install ecb
-ECB_VERSION=2.40
+ECB_VERSION=snap
 echo "Install ecb ......"
 tar xfz $PKG_PATH/ecb-$ECB_VERSION.tar.gz -C /tmp
 mv /tmp/ecb-$ECB_VERSION $TARGET_SITE_LISP_PATH/ecb

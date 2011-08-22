@@ -6,7 +6,7 @@
 (add-to-list 'load-path (concat site-lisp-path "yasnippet"))
 (require 'yasnippet) ;; not yasnippet-bundle
 
-(setq yas/root-directory (concat gx-emacs-path "yasnippet-0.6.1c/snippets"))
+(setq yas/root-directory (concat site-lisp-path "yasnippet/snippets"))
 (yas/load-directory yas/root-directory)
 (setq yas/trigger-key nil)
 (yas/global-mode t)
