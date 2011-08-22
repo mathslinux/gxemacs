@@ -1,10 +1,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Media config file
-;; Time-stamp: <2011-08-21-23:48:13 星期日 by geniux>
+;; Time-stamp: <2011-08-22-11:25:01 by mathslinux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; EMMS setting
-(add-to-list 'load-path (concat lisps-path "/emms/lisp"))
+(add-to-list 'load-path (concat site-lisp-path "emms/lisp"))
 (require 'emms-setup)
 (emms-standard)
 ;; no cli volume setup tools in windows

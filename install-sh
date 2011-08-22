@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2011-08-22-10:53:42 by mathslinux>
+# Time-stamp: <2011-08-22-15:28:32 by mathslinux>
 
 ################################################################################
 # @file   install-sh
@@ -57,18 +57,26 @@ mkdir -p $TEMPORARY_PATH
 FONT_DIR=/usr/share/fonts
 APPLE_FONT_DIR=$FONT_DIR/apple
 WINDOWS_FONT_DIR=$FONT_DIR/windows
-ret=fc-list | grep -i "monaco"
-if [ $? -ne 0 ];
+ret=`fc-list | grep -i "monaco"`
+if [ $? -ne 0 ]; then
 	echo "Install monaco font ......"
 	sudo mkdir -p $APPLE_FONT_DIR
 	sudo cp $PKG_PATH/MONACO.TTF $APPLE_FONT_DIR
+	cd $APPLE_FONT_DIR
+	sudo mkfontscale
+	sudo mkfontdir
+	sudo fc-cache -fv
 fi
 
-ret=fc-list | grep -i ""
-if [ $? -ne 0 ];
-	echo "Install monaco font ......"
-	sudo mkdir -p $APPLE_FONT_DIR
-	sudo cp $PKG_PATH/MONACO.TTF $APPLE_FONT_DIR
+ret=`fc-list | grep -i "YaHei"`
+if [ $? -ne 0 ]; then
+	echo "Install yahei font ......"
+	sudo mkdir -p $WINDOWS_FONT_DIR
+	sudo cp $PKG_PATH/msyh*.ttf $WINDOWS_FONT_DIR
+	cd $WINDOWS_FONT_DIR
+	sudo mkfontscale
+	sudo mkfontdir
+	sudo fc-cache -fv
 fi
 
 # Install site lisp and my lisp
@@ -76,7 +84,7 @@ echo "Copy pkg's lisp files to config directory ......"
 cp $PKG_PATH/*.el $TARGET_SITE_LISP_PATH
 
 echo "Copy all my files to config directory ......"
-cp -r $MY_LISP_PATH/* $TARGET_MY_LISP_PATH
+cp -r $MY_LISP_PATH/*.el $TARGET_MY_LISP_PATH
 
 # Copy the .emacs initial file to install directory, if there is a .emacs
 # already, back up the old .emacs
@@ -87,14 +95,20 @@ fi
 cp $CONFIG_FILE $TARGET_CONFIG_FILE
 
 ################################################################################
+# Install yasnippet
+YASNIPPET_VERSION=0.6.1c
+echo "Install yasnippet ......"
+tar xfj $PKG_PATH/yasnippet-$YASNIPPET_VERSION.tar.bz2 -C /tmp
+mv /tmp/yasnippet-$YASNIPPET_VERSION $TARGET_SITE_LISP_PATH/yasnippet
+
 # Install auto-complete
 echo "Install auto-complete ......"
-sudo rm -rf /tmp/auto-complete-1.3.1
-tar xfj $PKG_PATH/auto-complete-1.3.1.tar.bz2 -C /tmp;
+AUTO_COMPLETE_VERSION=1.3.1
+sudo rm -rf /tmp/auto-complete-$AUTO_COMPLETE_VERSION
+tar xfj $PKG_PATH/auto-complete-$AUTO_COMPLETE_VERSION.tar.bz2 -C /tmp;
 mkdir -p $TARGET_SITE_LISP_PATH/auto-complete;
-cd /tmp/auto-complete-1.3.1;
+cd /tmp/auto-complete-$AUTO_COMPLETE_VERSION;
 $MAKE install DIR=$TARGET_SITE_LISP_PATH/auto-complete > /dev/null
-
 
 ################################################################################
 # Install rope, ropemacs, ropemode for python mode
@@ -178,8 +192,18 @@ cp -rvd $PKG_PATH/emacs-w3m /tmp
 cd /tmp/emacs-w3m
 autoconf && ./configure --prefix=$TARGET_SITE_LISP_PATH
 [ $? -eq 0 ] || exit 1
-$MAKE && sudo $MAKE install
+$MAKE && $MAKE install
 
 ################################################################################
 # Install emms
-# cp -dr $PKG_PATH/emms 
+# Howto: git clone git://git.sv.gnu.org/emms.git
+cp -dr $PKG_PATH/emms $TARGET_SITE_LISP_PATH/emms
+
+################################################################################
+# Install ecb
+ECB_VERSION=2.40
+echo "Install ecb ......"
+tar xfz $PKG_PATH/ecb-$ECB_VERSION.tar.gz -C /tmp
+mv /tmp/ecb-$ECB_VERSION $TARGET_SITE_LISP_PATH/ecb
+cd $TARGET_SITE_LISP_PATH/ecb
+# $MAKE

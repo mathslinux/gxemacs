@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; utils config file ;;
-;; Time-stamp: <2011-08-21-23:38:55 星期日 by geniux>
+;; Time-stamp: <2011-08-22-14:46:01 by mathslinux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 
 ;; Cutting and pasting uses the clipboard
@@ -49,3 +49,6 @@
 
 ;; browse
 (setq browse-url-browser-function 'browse-url-firefox)
+
+;; Auto saves after 100 input events
+(setq auto-save-interval 100)
