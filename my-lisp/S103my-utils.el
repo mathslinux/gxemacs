@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; utils config file ;;
-;; Time-stamp: <2011-08-22-14:46:01 by mathslinux>
+;; Time-stamp: <2011-08-23-11:49:40 星期二 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 
 ;; Cutting and pasting uses the clipboard
@@ -52,3 +52,47 @@
 
 ;; Auto saves after 100 input events
 (setq auto-save-interval 100)
+
+;; Enable font-lock mode
+(global-font-lock-mode t)
+
+;; Enabe image mode
+(auto-image-file-mode)
+(setq mm-inline-large-images t)
+;; (add-to-list 'mm-attachment-override-types "image/*")
+
+;; Close the noise when enter tab
+(setq visible-bell t)
+
+;; Enable ido mode
+(ido-mode t)
+
+;; Set text-mode is the default mode
+(custom-set-variables
+ '(major-mode (quote text-mode)))
+
+;; Better experience of page up and down
+(setq scroll-margin 3 scroll-conservatively 10000)
+
+;; If the cursor gets too close to the mouse, shows steps along the way
+;; for illusion of motion
+(mouse-avoidance-mode 'animate)
+
+;; 当有两个文件名相同的缓冲时, 使用前缀的目录名做 buffer 名字.
+(setq uniquify-buffer-name-style 'forward)
+
+;; C-k delete the line
+(setq-default kill-whole-line t)
+
+;; Auto add a new line to end of file
+(setq require-final-newline t)
+
+;; Keep the cursor at end of line when moving between end of lines
+;; (setq line-move-visual nil)
+;; (setq track-eol t)
+
+(defun eshell/clear()
+  "to clear the eshell buffer."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))

@@ -26,32 +26,6 @@ TEMPORARY_PATH=$TARGET_CONFIG_PATH/temporary
 OS_TYPE=`cat /etc/*-release`
 MAKE="make"
 
-# Now check whether all conditions are met.
-echo "Checking for whether all conditions are met ......"
-test=`which hg`
-if [ $? -ne 0 ]; then
-    echo "Mercurial must be installed, please install it and go on"
-    echo "Exit"
-    exit 1;
-fi
-test=`which cvs`
-if [ $? -ne 0 ]; then
-    echo "CVS must be installed, please install it and go on"
-    echo "Exit"
-    exit 1;
-fi
-
-# Back up the old emacs config directory if have. Create directory we need
-if [ -d $TARGET_CONFIG_PATH ]; then
-    echo "Back up $TARGET_CONFIG_PATH ......"
-    rm -rf $TARGET_CONFIG_PATH-bakup
-    cp -r $TARGET_CONFIG_PATH $TARGET_CONFIG_PATH-bakup
-fi
-mkdir -p $TARGET_SITE_LISP_PATH
-mkdir -p $TARGET_MY_LISP_PATH
-mkdir -p $TARGET_APP_PATH
-mkdir -p $TEMPORARY_PATH
-
 ################################################################################
 # Install fonts
 FONT_DIR=/usr/share/fonts
@@ -79,6 +53,7 @@ if [ $? -ne 0 ]; then
 	sudo fc-cache -fv
 fi
 
+exit 1
 # Install site lisp and my lisp
 echo "Copy pkg's lisp files to config directory ......"
 cp $PKG_PATH/*.el $TARGET_SITE_LISP_PATH

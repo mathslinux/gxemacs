@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-;; Time-stamp: <2011-08-22-14:42:56 by mathslinux>
+;; Time-stamp: <2011-08-23-14:24:12 by mathslinux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Font setting
@@ -12,7 +12,7 @@
 (set-fontset-font
     (frame-parameter nil 'font)
     'han
-    (font-spec :family "微软雅黑" :slant 'normal :weight 'normal :width 'normal :size 16))
+    (font-spec :family "微软雅黑" :slant 'normal :weight 'normal :width 'normal :size 15))
 
 
 ;; Theme setting
@@ -28,5 +28,16 @@
 ;; 顯示標籤
 (require 'tabbar)
 (tabbar-mode t)
+;; Cyclic navigation through tabs
+(setq tabbar-cycling-scope 'tabs)
 
 (tool-bar-mode -1)
+
+;; Set window's title 
+(setq frame-title-format "emacs@%b")
+
+;; Inhibits the startup screen
+(setq inhibit-startup-message t)
+
+;; Cancel the scroll
+(set-scroll-bar-mode nil)

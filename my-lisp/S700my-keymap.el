@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key map config file ;;
-;; Time-stamp: <2011-08-21-20:56:25 星期日 by geniux>
+;; Time-stamp: <2011-08-23-11:07:20 by mathslinux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; close current buffer
@@ -55,7 +55,8 @@
 (global-set-key [M-up] 'windmove-up)
 (global-set-key [M-down] 'windmove-down)
 
-;; vi的%括号匹配
+;; VI 的 % 括号匹配
+;; Default is C-M-n C-M-p
 (global-set-key "%" 'match-paren)
 (defun match-paren (arg)
   "Go to the matching parenthesis if on parenthesis otherwise insert %."
@@ -145,3 +146,5 @@
 (global-set-key (kbd "<f2>") 'bm-toggle)
 (global-set-key (kbd "<C-f2>")   'bm-next)
 (global-set-key (kbd "<S-f2>") 'bm-previous)
+
+(global-set-key (kbd "M-2") 'set-mark-command)
