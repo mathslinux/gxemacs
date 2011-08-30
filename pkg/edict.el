@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011 mathslinux
 
 ;; Author: mathslinux <riegamaths@gmail.com>
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Keywords: dictionary
 ;; URL: http://mathslinux.org
 
