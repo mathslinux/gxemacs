@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; utils config file ;;
-;; Time-stamp: <2011-08-23-11:49:40 星期二 by geniux>
+;; Time-stamp: <2011-11-10-10:29:05 星期四 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 
 ;; Cutting and pasting uses the clipboard
@@ -96,3 +96,6 @@
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
+
+;; Start emacs server default.
+(server-start)
