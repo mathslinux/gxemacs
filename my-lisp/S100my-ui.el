@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-;; Time-stamp: <2011-08-23-14:24:12 by mathslinux>
+;; Time-stamp: <2011-11-10-10:22:55 星期四 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Font setting
@@ -31,7 +31,11 @@
 ;; Cyclic navigation through tabs
 (setq tabbar-cycling-scope 'tabs)
 
+;; Hide tool bar
 (tool-bar-mode -1)
+
+;; Hide menu bar
+(menu-bar-mode -1)
 
 ;; Set window's title 
 (setq frame-title-format "emacs@%b")
@@ -41,3 +45,15 @@
 
 ;; Cancel the scroll
 (set-scroll-bar-mode nil)
+
+;; Support full screen
+(defun toggle-fullscreen (&optional f)
+  (interactive)
+  (let ((current-value (frame-parameter nil 'fullscreen)))
+	(set-frame-parameter nil 'fullscreen
+						 (if (equal 'fullboth current-value)
+							 (if (boundp 'old-fullscreen) old-fullscreen nil)
+						   (progn (setq old-fullscreen current-value)
+								  'fullboth)))))
+(global-set-key [f11] 'toggle-fullscreen)
+(add-hook 'after-make-frame-functions 'toggle-fullscreen)
