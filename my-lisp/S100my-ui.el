@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-;; Time-stamp: <2011-11-10-10:22:55 星期四 by geniux>
+;; Time-stamp: <2011-11-10-10:33:34 星期四 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Font setting
@@ -57,3 +57,4 @@
 								  'fullboth)))))
 (global-set-key [f11] 'toggle-fullscreen)
 (add-hook 'after-make-frame-functions 'toggle-fullscreen)
+(toggle-fullscreen)
