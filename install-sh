@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2011-08-30-23:41:34 星期二 by geniux>
+# Time-stamp: <2011-09-07-16:07:37 星期三 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -261,3 +261,12 @@ if [ ! -d $TARGET_APP_PATH/stardict-oxford-gb-2.4.2 ]; then
 	tar xfj $PKG_PATH/stardict-oxford-gb-2.4.2.tar.bz2 -C $TARGET_APP_PATH
 fi
 cp -f $PKG_PATH/edict.py $TARGET_APP_PATH
+
+################################################################################
+# Install for blog
+cp -f $PKG_PATH/xml-rpc.el $TARGET_SITE_LISP_PATH
+
+if [ -d $TARGET_SITE_LISP_PATH/org2blog ]; then
+	rm -rf $TARGET_SITE_LISP_PATH/org2blog
+fi
+cp -r $PKG_PATH/org2blog $TARGET_SITE_LISP_PATH
