@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c mode config file ;;
-;; Time-stamp: <2011-06-12-00:14:45 星期日 by geniux>
+;; Time-stamp: <2011-11-23-16:57:42 星期三 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'cc-mode)
@@ -56,11 +56,13 @@
 
 ;; cscope
 (require 'xcscope)
+(setq cscope-do-not-update-database t)
 
 ;; doxygen
-;; (require 'doxymacs)
-;; (add-hook 'c-mode-common-hook 'doxymacs-mode)
-;; (defun my-doxymacs-font-lock-hook ()
-;;   (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
-;; 	  (doxymacs-font-lock)))
-;; (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+(require 'doxymacs)
+(add-hook 'c-mode-common-hook 'doxymacs-mode)
+(defun my-doxymacs-font-lock-hook ()
+  (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+	  (doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+

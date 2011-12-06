@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2011-09-07-16:07:37 星期三 by geniux>
+# Time-stamp: <2011-12-06-14:09:01 星期二 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -27,19 +27,19 @@ OS_TYPE=`cat /etc/*-release`
 MAKE="make"
 
 # Now check whether all conditions are met.
-echo "Checking for whether all conditions are met ......"
-test=`which hg`
-if [ $? -ne 0 ]; then
-    echo "Mercurial must be installed, please install it and go on"
-    echo "Exit"
-    exit 1;
-fi
-test=`which cvs`
-if [ $? -ne 0 ]; then
-    echo "CVS must be installed, please install it and go on"
-    echo "Exit"
-    exit 1;
-fi
+# echo "Checking for whether all conditions are met ......"
+# test=`which hg`
+# if [ $? -ne 0 ]; then
+#     echo "Mercurial must be installed, please install it and go on"
+#     echo "Exit"
+#     exit 1;
+# fi
+# test=`which cvs`
+# if [ $? -ne 0 ]; then
+#     echo "CVS must be installed, please install it and go on"
+#     echo "Exit"
+#     exit 1;
+# fi
 
 # Back up the old emacs config directory if have. Create directory we need
 if [ -d $TARGET_CONFIG_PATH ]; then
@@ -270,3 +270,32 @@ if [ -d $TARGET_SITE_LISP_PATH/org2blog ]; then
 	rm -rf $TARGET_SITE_LISP_PATH/org2blog
 fi
 cp -r $PKG_PATH/org2blog $TARGET_SITE_LISP_PATH
+
+################################################################################
+# doxymacs for code comment
+mkdir -p $TARGET_SITE_LISP_PATH/share/emacs/site-lisp
+if [ ! -f $TARGET_SITE_LISP_PATH/share/emacs/site-lisp/doxymacs.el ]; then
+	echo "Install doxymacs ......"
+	sudo rm -rf /tmp/doxymacs-1.8.0
+	tar xfz $PKG_PATH/doxymacs-1.8.0.tar.gz -C /tmp
+	cd /tmp/doxymacs-1.8.0
+	./configure --prefix=$TARGET_SITE_LISP_PATH
+	[ $? -eq 0 ] || exit 1
+	$MAKE && $MAKE install
+fi
+
+################################################################################
+# Install org-mode 
+mkdir -p $TARGET_SITE_LISP_PATH/share/emacs/site-lisp
+if [ ! -f $TARGET_SITE_LISP_PATH/share/emacs/site-lisp/org.el ]; then
+	echo "Install org-mode ......"
+	sudo rm -rf /tmp/org-7.7
+	tar xfz $PKG_PATH/org-7.7.tar.gz -C /tmp
+	cd /tmp/org-7.7
+	$MAKE prefix=$TARGET_SITE_LISP_PATH && $MAKE prefix=$TARGET_SITE_LISP_PATH install
+fi
+
+# Config for erc
+if [ ! -f $HOME/.ercpass  ]; then
+	touch $HOME/.ercpass
+fi

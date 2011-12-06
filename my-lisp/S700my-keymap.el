@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key map config file ;;
-;; Time-stamp: <2011-08-23-11:07:20 by mathslinux>
+;; Time-stamp: <2011-09-21-19:01:47 星期三 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; close current buffer
@@ -78,14 +78,14 @@
 (defun define-c-mode-fn-key-debug()
   (setq gdb-many-windows t)
   (define-key c-mode-base-map (kbd "C-c g") 'gdb)
-  (define-key c-mode-base-map (kbd "<f5>") 'gud-go)
+  ;; (define-key c-mode-base-map (kbd "<f5>") 'gud-go)
   (define-key c-mode-base-map (kbd "<f10>") 'gud-step)
   (define-key c-mode-base-map (kbd "<f11>") 'gud-next)
   (define-key c-mode-base-map (kbd "S-<f10>") 'gud-finish)
   (define-key c-mode-base-map (kbd "<f9>") 'gud-break)
   (define-key c-mode-base-map (kbd "S-<f9>") 'gud-remove)
   
-  (define-key gud-mode-map (kbd "<f5>") 'gud-go)
+  ;; (define-key gud-mode-map (kbd "<f5>") 'gud-go)
   (define-key gud-mode-map (kbd "<f10>") 'gud-step)
   (define-key gud-mode-map (kbd "<f11>") 'gud-next)
   (define-key gud-mode-map (kbd "S-<f10>") 'gud-finish)

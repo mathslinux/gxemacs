@@ -1,12 +1,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-;; Time-stamp: <2011-11-10-10:33:34 星期四 by geniux>
+;; Time-stamp: <2011-12-06-14:06:45 星期二 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Font setting
 ;; Setting english font
 (set-face-attribute 
  'default nil :family "Monaco" :slant 'normal :weight 'normal :height 120 :width 'normal)
+
+(set-face-attribute
+ 'default nil :font "Monaco 13")
 
 ;; Setting chinese font
 (set-fontset-font
@@ -17,8 +20,15 @@
 
 ;; Theme setting
 (require 'color-theme)
-(load "color-theme-blackboard.el")
-(color-theme-blackboard)
+;; (load "color-theme-blackboard.el")
+;; (color-theme-blackboard)
+(color-theme-oswald)
+;; (color-theme-rotor)
+
+;; solarized theme
+;; (require 'color-theme-solarized)
+;; (color-theme-solarized-dark)]
+;; (color-theme-solarized-light)
 
 ;; 顯示行號和列號
 (setq line-number-mode t)
@@ -55,6 +65,6 @@
 							 (if (boundp 'old-fullscreen) old-fullscreen nil)
 						   (progn (setq old-fullscreen current-value)
 								  'fullboth)))))
-(global-set-key [f11] 'toggle-fullscreen)
+(global-set-key [f9] 'toggle-fullscreen)
 (add-hook 'after-make-frame-functions 'toggle-fullscreen)
 (toggle-fullscreen)
