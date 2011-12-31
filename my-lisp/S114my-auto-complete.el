@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto-complete config file ;;
-;; Time-stamp: <2011-08-23-14:50:59 by mathslinux>
+;; Time-stamp: <2011-10-27-10:58:14 星期四 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defconst auto-complete-path (concat site-lisp-path "auto-complete"))
@@ -15,4 +15,5 @@
 										   change-log-mode text-mode
 										   makefile-bsdmake-mo
 										   autoconf-mode
-										   makefile-automake-mode)))
+										   makefile-automake-mode
+										   eshell-mode)))

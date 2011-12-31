@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c mode config file ;;
-;; Time-stamp: <2011-06-12-00:14:45 星期日 by geniux>
+;; Time-stamp: <2011-12-13-10:43:27 Tuesday by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'cc-mode)
@@ -37,7 +37,7 @@
 
 (defun gx-c-mode()
   (interactive)
-  (c-set-style "K&R")
+  (c-set-style "linux")
   ;;(c-toggle-auto-state)
   (c-toggle-hungry-state)
   (setq c-basic-offset 4)
@@ -56,11 +56,13 @@
 
 ;; cscope
 (require 'xcscope)
+(setq cscope-do-not-update-database t)
 
 ;; doxygen
-;; (require 'doxymacs)
-;; (add-hook 'c-mode-common-hook 'doxymacs-mode)
-;; (defun my-doxymacs-font-lock-hook ()
-;;   (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
-;; 	  (doxymacs-font-lock)))
-;; (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+(require 'doxymacs)
+(add-hook 'c-mode-common-hook 'doxymacs-mode)
+(defun my-doxymacs-font-lock-hook ()
+  (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+	  (doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+

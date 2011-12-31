@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Instant Messaging config file ;;
-;; Time-stamp: <2011-08-22-14:09:37 by mathslinux>
+;; Time-stamp: <2011-11-21-12:07:57 星期一 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; emacs-jabber
@@ -29,3 +29,54 @@
 ;;         ":replies"
 ;;         ":direct_messages"
 ;;         "citizen428/tupaleros"))
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ERC configure ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; General config
+(load "~/.ercpass")						;; Load my password file
+(setq erc-nick "mathslinux")
+(setq erc-away-nickname "mathslinux{away}")
+(setq erc-user-full-name "mathslinux")
+
+;; Auto login 
+(require 'erc-services)
+(erc-services-mode 1)
+(setq erc-nickserv-identify-mode (quote autodetect))
+(setq erc-prompt-for-nickserv-password nil)
+(setq erc-nickserv-passwords
+	  '((freenode     (("mathslinux" . ,freenode-pass)
+					   ("nick-two" . ,test)))
+		(DALnet       (("nickname" . ,test)))))
+
+;; Channel config
+(setq erc-autojoin-channels-alist '(("freenode.net"
+                                     "#ubuntu-cn" "#gentoo-cn"
+                                     "#emacs" "#lisp" "#python")
+                                    ("oftc.net" "#arch-cn" "#qemu" "#ovirt" "emacs-cn")))
+
+;; Channel specific prompt
+(setq erc-prompt (lambda ()
+                   (if (and (boundp 'erc-default-recipients)
+                            (erc-default-target))
+                       (erc-propertize (concat (erc-default-target) ">")
+                                       'read-only t
+                                       'rear-nonsticky t
+                                       'front-nonsticky t)
+                     (erc-propertize (concat "ERC>")
+                                     'read-only t
+                                     'rear-nonsticky t
+                                     'front-nonsticky t))))
+
+;; Automatically truncate buffer
+(defvar erc-insert-post-hook)
+(add-hook 'erc-insert-post-hook
+          'erc-truncate-buffer)
+(setq erc-truncate-buffer-on-save t)
+
+(defun erc-start ()
+  (interactive)
+  (erc :server "irc.freenode.net" :port 6667 :nick "mathslinux" :password freenode-pass)
+  ;; (erc-ssl :server "irc.oftc.net" :port 6667 :nick "mathslinux" :password oftc-pass)) 
+  (erc :server "irc.oftc.net" :port 6667 :nick "mathslinux" :password oftc-pass))
