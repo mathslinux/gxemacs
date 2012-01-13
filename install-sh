@@ -68,16 +68,16 @@ if [ $? -ne 0 ]; then
 	sudo fc-cache -fv
 fi
 
-ret=`fc-list | grep -i "YaHei"`
-if [ $? -ne 0 ]; then
-	echo "Install yahei font ......"
-	sudo mkdir -p $WINDOWS_FONT_DIR
-	sudo cp $PKG_PATH/msyh*.ttf $WINDOWS_FONT_DIR
-	cd $WINDOWS_FONT_DIR
-	sudo mkfontscale
-	sudo mkfontdir
-	sudo fc-cache -fv
-fi
+# ret=`fc-list | grep -i "YaHei"`
+# if [ $? -ne 0 ]; then
+# 	echo "Install yahei font ......"
+# 	sudo mkdir -p $WINDOWS_FONT_DIR
+# 	sudo cp $PKG_PATH/msyh*.ttf $WINDOWS_FONT_DIR
+# 	cd $WINDOWS_FONT_DIR
+# 	sudo mkfontscale
+# 	sudo mkfontdir
+# 	sudo fc-cache -fv
+# fi
 
 # Install site lisp and my lisp
 echo "Copy pkg's lisp files to config directory ......"
@@ -198,7 +198,7 @@ fi
 
 ################################################################################
 # Install gc
-test=`which /lib/libgc.so`
+# test=`which /lib/libgc.so`
 if [ ! -f /usr/include/gc.h ]; then
     echo "Gc library is not install, install it ......"
     sudo rm -rf /tmp/gc-7.1

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-;; Time-stamp: <2011-12-06-14:06:45 星期二 by geniux>
+;; Time-stamp: <2012-01-13-12:18:49 星期五 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Font setting
@@ -15,7 +15,7 @@
 (set-fontset-font
     (frame-parameter nil 'font)
     'han
-    (font-spec :family "微软雅黑" :slant 'normal :weight 'normal :width 'normal :size 15))
+    (font-spec :family "WenQuanYi Micro Hei Mono" :slant 'normal :weight 'normal :width 'normal :size 15))
 
 
 ;; Theme setting
