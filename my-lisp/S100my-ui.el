@@ -1,22 +1,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-;; Time-stamp: <2011-12-31-15:14:50 Saturday by geniux>
+;; Time-stamp: <2012-02-06-14:22:34 星期一 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Font setting
 ;; Setting english font
-(set-face-attribute 
- 'default nil :family "Monaco" :slant 'normal :weight 'normal :height 120 :width 'normal)
-
-(set-face-attribute
- 'default nil :font "Monaco 13")
+;; (set-face-attribute 
+;;  'default nil :family "Monaco" :slant 'normal :weight 'normal :height 120 :width 'normal)
 
 ;; Setting chinese font
 (set-fontset-font
     (frame-parameter nil 'font)
     'han
-    (font-spec :family "微软雅黑" :slant 'normal :weight 'normal :width 'normal :size 15))
+    (font-spec :family "WenQuanYi Micro Hei Mono" :slant 'normal :weight 'normal :width 'normal :size 16))
 
+(set-face-attribute
+ 'default nil :font "Monaco 12")
 
 ;; Theme setting
 (require 'color-theme)
@@ -73,6 +72,6 @@
 							 (if (boundp 'old-fullscreen) old-fullscreen nil)
 						   (progn (setq old-fullscreen current-value)
 								  'fullboth)))))
-(global-set-key [f9] 'toggle-fullscreen)
+;; (global-set-key [f9] 'toggle-fullscreen)
 (add-hook 'after-make-frame-functions 'toggle-fullscreen)
-(toggle-fullscreen)
+;; (toggle-fullscreen)
