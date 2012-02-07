@@ -1,10 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-<<<<<<< HEAD
-;; Time-stamp: <2012-02-06-14:22:34 星期一 by geniux>
-=======
-;; Time-stamp: <2012-01-13-12:18:49 星期五 by geniux>
->>>>>>> 2dfc9ed84ac7b9aa89fd8916696ee3779e84348f
+;; Time-stamp: <2012-02-07-11:17:05 Tuesday by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Font setting
@@ -12,18 +8,11 @@
 ;; (set-face-attribute 
 ;;  'default nil :family "Monaco" :slant 'normal :weight 'normal :height 120 :width 'normal)
 
-(set-face-attribute
- 'default nil :font "Monaco 13")
-
 ;; Setting chinese font
 (set-fontset-font
     (frame-parameter nil 'font)
     'han
-<<<<<<< HEAD
-    (font-spec :family "WenQuanYi Micro Hei Mono" :slant 'normal :weight 'normal :width 'normal :size 16))
-=======
     (font-spec :family "WenQuanYi Micro Hei Mono" :slant 'normal :weight 'normal :width 'normal :size 15))
->>>>>>> 2dfc9ed84ac7b9aa89fd8916696ee3779e84348f
 
 (set-face-attribute
  'default nil :font "Monaco 12")
@@ -32,7 +21,6 @@
 (require 'color-theme)
 ;; (load "color-theme-blackboard.el")
 ;; (color-theme-blackboard)
-<<<<<<< HEAD
 ;; (color-theme-oswald)
 ;; (color-theme-rotor)
 
@@ -48,15 +36,6 @@
 ;; sunburst theme
 (load "color-theme-sunburst.el")
 (color-theme-sunburst)
-=======
-(color-theme-oswald)
-;; (color-theme-rotor)
-
-;; solarized theme
-;; (require 'color-theme-solarized)
-;; (color-theme-solarized-dark)]
-;; (color-theme-solarized-light)
->>>>>>> 2dfc9ed84ac7b9aa89fd8916696ee3779e84348f
 
 ;; 顯示行號和列號
 (setq line-number-mode t)
@@ -93,10 +72,6 @@
 							 (if (boundp 'old-fullscreen) old-fullscreen nil)
 						   (progn (setq old-fullscreen current-value)
 								  'fullboth)))))
-<<<<<<< HEAD
 ;; (global-set-key [f9] 'toggle-fullscreen)
-=======
-(global-set-key [f9] 'toggle-fullscreen)
->>>>>>> 2dfc9ed84ac7b9aa89fd8916696ee3779e84348f
 (add-hook 'after-make-frame-functions 'toggle-fullscreen)
 ;; (toggle-fullscreen)
