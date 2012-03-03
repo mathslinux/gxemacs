@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; cedet mode config file ;;
-;; Time-stamp: <2011-06-07-20:43:21 星期二 by geniux>
+;; Time-stamp: <2012-02-20-13:59:44 星期一 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq semantic-default-submodes '(global-semantic-idle-scheduler-mode
@@ -11,6 +11,8 @@
 								  global-semantic-highlight-func-mode ))
 (semantic-mode t)
 
+
+(require 'semantic/analyze/refs)
 
 ;; 代码跳转, 跳回 from emacser.com
 (defun semantic-ia-fast-jump-back ()
@@ -31,4 +33,5 @@
     (semantic-ia-fast-jump (point))))
 (define-key semantic-mode-map [f12] 'semantic-ia-fast-jump-or-back)
 (define-key semantic-mode-map [C-f12] 'semantic-ia-fast-jump-or-back)
-(define-key semantic-mode-map [S-f12] 'semantic-ia-fast-jump-back)
+(define-key semantic-mode-map [S-f12] 'semantic-ia-fast-jump-back) 
+
