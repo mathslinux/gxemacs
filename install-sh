@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2011-12-06-14:09:01 星期二 by geniux>
+# Time-stamp: <2012-03-06-18:12:28 星期二 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -298,4 +298,15 @@ fi
 # Config for erc
 if [ ! -f $HOME/.ercpass  ]; then
 	touch $HOME/.ercpass
+fi
+
+################################################################################
+# Install git-emacs
+GIT_EMACS_VERSION=20120129
+if [ ! -d $TARGET_SITE_LISP_PATH/git-emacs ]; then
+	echo "Install git-emacs ......"
+	tar xf $PKG_PATH/git-emacs-$GIT_EMACS_VERSION.tar.gz -C /tmp
+	mv /tmp/git-emacs-$GIT_EMACS_VERSION $TARGET_SITE_LISP_PATH/git-emacs
+	cd $TARGET_SITE_LISP_PATH/git-emacs
+	make
 fi
