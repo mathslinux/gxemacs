@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-;; Time-stamp: <2012-02-07-11:17:05 Tuesday by geniux>
+;; Time-stamp: <2012-03-12-14:37:52 星期一 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Font setting
@@ -9,13 +9,18 @@
 ;;  'default nil :family "Monaco" :slant 'normal :weight 'normal :height 120 :width 'normal)
 
 ;; Setting chinese font
-(set-fontset-font
-    (frame-parameter nil 'font)
-    'han
-    (font-spec :family "WenQuanYi Micro Hei Mono" :slant 'normal :weight 'normal :width 'normal :size 15))
 
-(set-face-attribute
- 'default nil :font "Monaco 12")
+;; If emacs starts on X, set the font we want.
+(if (display-graphic-p)
+    (progn
+	  (set-fontset-font
+	   (frame-parameter nil 'font)
+	   'han
+	   (font-spec :family "WenQuanYi Micro Hei Mono" :slant 'normal :weight 'normal :width 'normal :size 15))
+	  (set-face-attribute
+	   'default nil :font "Monaco 12")
+	  ))
+
 
 ;; Theme setting
 (require 'color-theme)
