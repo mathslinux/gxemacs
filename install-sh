@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-03-06-18:12:28 星期二 by geniux>
+# Time-stamp: <2012-03-12-15:27:15 星期一 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -309,4 +309,15 @@ if [ ! -d $TARGET_SITE_LISP_PATH/git-emacs ]; then
 	mv /tmp/git-emacs-$GIT_EMACS_VERSION $TARGET_SITE_LISP_PATH/git-emacs
 	cd $TARGET_SITE_LISP_PATH/git-emacs
 	make
+fi
+
+################################################################################
+# Install CEDET
+CEDET_VERSION=20120129
+if [ ! -d $TARGET_SITE_LISP_PATH/cedet ]; then
+	echo "Install CEDET ......"
+	tar xf $PKG_PATH/cedet-$CEDET_VERSION.tar.gz -C /tmp
+	mv /tmp/cedet-$CEDET_VERSION $TARGET_SITE_LISP_PATH/cedet
+	cd $TARGET_SITE_LISP_PATH/cedet
+	make EMACS=emacs
 fi
