@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key map config file ;;
-;; Time-stamp: <2011-09-21-19:01:47 星期三 by geniux>
+;; Time-stamp: <2012-03-19-10:40:13 星期一 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; close current buffer
@@ -22,6 +22,15 @@
   )
 (define-key global-map (kbd "C-c y") 'copy-line)
 
+
+;; Save desktop save after saving buffer
+(defun save-buffer-and-desktop ()
+  "Save desktop save after saving buffer."
+  (interactive)
+  (progn
+	(save-buffer)
+	(desktop-save-in-desktop-dir)))
+(global-set-key (kbd "C-x C-s") 'save-buffer-and-desktop)
 
 ;; Undo, Redo
 (require 'redo)
