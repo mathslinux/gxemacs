@@ -1,14 +1,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto-complete config file ;;
-;; Time-stamp: <2012-03-13-13:46:30 星期二 by geniux>
+;; Time-stamp: <2012-03-14-15:36:33 星期三 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defconst auto-complete-path (concat site-lisp-path "auto-complete"))
 (add-to-list 'load-path auto-complete-path)
+
+;;; Require
+(require 'auto-complete-semantic nil t)  ;optional
 (require 'auto-complete-config)
+
 (add-to-list 'ac-dictionary-directories (concat auto-complete-path "lisps/auto-complete/ac-dict"))
 (ac-config-default)
 
+
+(add-hook 'c-mode-common-hook '(lambda ()
+        (make-local-variable 'ac-sources)
+        (setq ac-sources (append ac-sources '(ac-source-semantic)))))
+		
 ;; For semantic backend.
 (add-hook 'c-mode-common-hook
 		  (lambda ()
