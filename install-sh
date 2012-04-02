@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-04-02-21:54:05 星期一 by geniux>
+# Time-stamp: <2012-04-02-22:01:08 星期一 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -335,7 +335,7 @@ ANYTHING_CONFIG_VERSION=20120331
 if [ ! -d $TARGET_SITE_LISP_PATH/anything-config ]; then
 	echo "Install anything-config ......"
 	tar xf $PKG_PATH/anything-config-$ANYTHING_CONFIG_VERSION.tar.gz -C /tmp
-	mv /tmp/anything-$ANYTHING_CONFIG_VERSION $TARGET_SITE_LISP_PATH/anything-config
+	mv /tmp/anything-config-$ANYTHING_CONFIG_VERSION $TARGET_SITE_LISP_PATH/anything-config
 	cd $TARGET_SITE_LISP_PATH/anything-config
 	$MAKE
 fi
