@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-04-02-21:50:08 星期一 by geniux>
+# Time-stamp: <2012-04-02-21:54:05 星期一 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -24,7 +24,7 @@ TEMPORARY_PATH=$TARGET_CONFIG_PATH/temporary
 
 # Get the os type
 OS_TYPE=`cat /etc/*-release`
-MAKE="make -j5"
+MAKE="make"
 
 # Now check whether all conditions are met.
 # echo "Checking for whether all conditions are met ......"
@@ -320,7 +320,7 @@ fi
 
 ################################################################################
 # Install CEDET
-CEDET_VERSION=20120129
+CEDET_VERSION=20120311
 if [ ! -d $TARGET_SITE_LISP_PATH/cedet ]; then
 	echo "Install CEDET ......"
 	tar xf $PKG_PATH/cedet-$CEDET_VERSION.tar.gz -C /tmp
