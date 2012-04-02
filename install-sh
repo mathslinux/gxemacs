@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-03-12-15:27:15 星期一 by geniux>
+# Time-stamp: <2012-04-02-21:44:47 星期一 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -24,7 +24,7 @@ TEMPORARY_PATH=$TARGET_CONFIG_PATH/temporary
 
 # Get the os type
 OS_TYPE=`cat /etc/*-release`
-MAKE="make"
+MAKE="make -j5"
 
 # Now check whether all conditions are met.
 # echo "Checking for whether all conditions are met ......"
@@ -104,7 +104,7 @@ if [ $? -ne 0 ]; then
 	cd /tmp/cscope-$CSCOPE_VERSION
 	./configure --prefix=/usr --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --mandir=/usr/share/man --infodir=/usr/share/info --datadir=/usr/share --sysconfdir=/etc --localstatedir=/var/lib
 	[ $? -eq 0 ] || exit 1
-	make && sudo make install
+	$MAKE && sudo $MAKE install
 	cp -f contrib/xcscope/xcscope.el $TARGET_SITE_LISP_PATH
 	sudo cp -f contrib/xcscope/cscope-indexer /bin
 fi
@@ -143,12 +143,18 @@ fi
 
 # Install auto-complete
 echo "Install auto-complete ......"
+
+
+# Install anything-config
 AUTO_COMPLETE_VERSION=1.3.1
-sudo rm -rf /tmp/auto-complete-$AUTO_COMPLETE_VERSION
-tar xfj $PKG_PATH/auto-complete-$AUTO_COMPLETE_VERSION.tar.bz2 -C /tmp;
-mkdir -p $TARGET_SITE_LISP_PATH/auto-complete;
-cd /tmp/auto-complete-$AUTO_COMPLETE_VERSION;
-$MAKE install DIR=$TARGET_SITE_LISP_PATH/auto-complete
+if [ ! -d $TARGET_SITE_LISP_PATH/auto-complete ]; then
+	sudo rm -rf /tmp/auto-complete-$AUTO_COMPLETE_VERSION
+	tar xfj $PKG_PATH/auto-complete-$AUTO_COMPLETE_VERSION.tar.bz2 -C /tmp;
+	mkdir -p $TARGET_SITE_LISP_PATH/auto-complete;
+	cd /tmp/auto-complete-$AUTO_COMPLETE_VERSION;
+	$MAKE install DIR=$TARGET_SITE_LISP_PATH/auto-complete
+fi
+
 
 ################################################################################
 # Install rope, ropemacs, ropemode for python mode
@@ -230,15 +236,15 @@ test=`which w3m`
 # Install emacs-w3m
 # Howto: cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m
 mkdir -p $TARGET_SITE_LISP_PATH/share/emacs/site-lisp
-if [ ! -d $TARGET_SITE_LISP_PATH/share/emacs/site-lisp/w3m ]; then
-	echo "Install emacs-w3m ......"
-	sudo rm -rf /tmp/emacs-w3m
-	cp -rvd $PKG_PATH/emacs-w3m /tmp
-	cd /tmp/emacs-w3m
-	autoconf && ./configure --prefix=$TARGET_SITE_LISP_PATH
-	[ $? -eq 0 ] || exit 1
-	$MAKE && $MAKE install
-fi
+# if [ ! -d $TARGET_SITE_LISP_PATH/share/emacs/site-lisp/w3m ]; then
+# 	echo "Install emacs-w3m ......"
+# 	sudo rm -rf /tmp/emacs-w3m
+# 	cp -rvd $PKG_PATH/emacs-w3m /tmp
+# 	cd /tmp/emacs-w3m
+# 	autoconf && ./configure --prefix=$TARGET_SITE_LISP_PATH
+# 	[ $? -eq 0 ] || exit 1
+# 	$MAKE && $MAKE install
+# fi
 
 ################################################################################
 # Install emms
@@ -308,7 +314,7 @@ if [ ! -d $TARGET_SITE_LISP_PATH/git-emacs ]; then
 	tar xf $PKG_PATH/git-emacs-$GIT_EMACS_VERSION.tar.gz -C /tmp
 	mv /tmp/git-emacs-$GIT_EMACS_VERSION $TARGET_SITE_LISP_PATH/git-emacs
 	cd $TARGET_SITE_LISP_PATH/git-emacs
-	make
+	$MAKE
 fi
 
 ################################################################################
@@ -319,5 +325,16 @@ if [ ! -d $TARGET_SITE_LISP_PATH/cedet ]; then
 	tar xf $PKG_PATH/cedet-$CEDET_VERSION.tar.gz -C /tmp
 	mv /tmp/cedet-$CEDET_VERSION $TARGET_SITE_LISP_PATH/cedet
 	cd $TARGET_SITE_LISP_PATH/cedet
-	make EMACS=emacs
+	$MAKE EMACS=emacs
+fi
+
+################################################################################
+# Install anything-config
+ANYTHING_CONFIG_VERSION=20120331
+if [ ! -d $TARGET_SITE_LISP_PATH/anything-config ]; then
+	echo "Install anything-config ......"
+	tar xf $PKG_PATH/anything-config-$ANYTHING_CONFIG_VERSION.tar.gz -C /tmp
+	mv /tmp/anything-$ANYTHING_CONFIG_VERSION $TARGET_SITE_LISP_PATH/anything-config
+	cd $TARGET_SITE_LISP_PATH/anything-config
+	$MAKE
 fi
