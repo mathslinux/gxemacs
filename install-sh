@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-04-02-21:44:47 星期一 by geniux>
+# Time-stamp: <2012-04-02-21:50:08 星期一 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -174,6 +174,7 @@ tar xfz $PKG_PATH/Pymacs-0.23.tar.gz -C /tmp
 cd /tmp/Pymacs-0.23
 $MAKE && sudo $MAKE install
 cp pymacs.el $TARGET_SITE_LISP_PATH
+chmod u+w $TARGET_SITE_LISP_PATH/pymacs.el
 
 sudo rm -rf /tmp/python-mode
 cp -rd $PKG_PATH/python-mode /tmp
