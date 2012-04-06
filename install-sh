@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-04-06-13:48:51 星期五 by geniux>
+# Time-stamp: <2012-04-06-13:53:35 星期五 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -111,26 +111,26 @@ fi
 
 ################################################################################
 # Install ibus.el to solove the bug that emacs cant use ibus
-echo "import sys" >> $TOP_PATH/xlib_test.py
-echo "try:" >> $TOP_PATH/xlib_test.py
-echo "    import Xlib" >> $TOP_PATH/xlib_test.py
-echo "    sys.exit(0)" >> $TOP_PATH/xlib_test.py
-echo "except ImportError:" >> $TOP_PATH/xlib_test.py
-echo "    sys.exit(1)" >> $TOP_PATH/xlib_test.py
+# echo "import sys" >> $TOP_PATH/xlib_test.py
+# echo "try:" >> $TOP_PATH/xlib_test.py
+# echo "    import Xlib" >> $TOP_PATH/xlib_test.py
+# echo "    sys.exit(0)" >> $TOP_PATH/xlib_test.py
+# echo "except ImportError:" >> $TOP_PATH/xlib_test.py
+# echo "    sys.exit(1)" >> $TOP_PATH/xlib_test.py
 
-python $TOP_PATH/xlib_test.py
-if [ $? -ne 0 ]; then
-	echo "python-xlib is not install, please install it, like sudo emerge python-xlib"
-	echo "!!!!!! Exit"
-	rm -f $TOP_PATH/xlib_test.py
-	exit 1
-fi
-rm -f $TOP_PATH/xlib_test.py
+# python $TOP_PATH/xlib_test.py
+# if [ $? -ne 0 ]; then
+# 	echo "python-xlib is not install, please install it, like sudo emerge python-xlib"
+# 	echo "!!!!!! Exit"
+# 	rm -f $TOP_PATH/xlib_test.py
+# 	exit 1
+# fi
+# rm -f $TOP_PATH/xlib_test.py
 
-IBUS_EL_VERSION=0.2.1
-tar xfz $PKG_PATH/ibus-el-$IBUS_EL_VERSION.tar.gz -C /tmp
-cp -f /tmp/ibus-el-$IBUS_EL_VERSION/ibus-el-agent $TARGET_SITE_LISP_PATH
-cp -f /tmp/ibus-el-$IBUS_EL_VERSION/ibus.el $TARGET_SITE_LISP_PATH
+# IBUS_EL_VERSION=0.2.1
+# tar xfz $PKG_PATH/ibus-el-$IBUS_EL_VERSION.tar.gz -C /tmp
+# cp -f /tmp/ibus-el-$IBUS_EL_VERSION/ibus-el-agent $TARGET_SITE_LISP_PATH
+# cp -f /tmp/ibus-el-$IBUS_EL_VERSION/ibus.el $TARGET_SITE_LISP_PATH
 
 ################################################################################
 # Install yasnippet
