@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-04-02-22:01:08 星期一 by geniux>
+# Time-stamp: <2012-04-06-13:48:51 星期五 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -206,15 +206,15 @@ fi
 ################################################################################
 # Install gc
 # test=`which /lib/libgc.so`
-if [ ! -f /usr/include/gc.h ]; then
-    echo "Gc library is not install, install it ......"
-    sudo rm -rf /tmp/gc-7.1
-    tar xfz $PKG_PATH/gc-7.1.tar.gz -C /tmp
-    cd /tmp/gc-7.1
-    ./configure --prefix=/usr --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --mandir=/usr/share/man --infodir=/usr/share/info --datadir=/usr/share --sysconfdir=/etc --localstatedir=/var/lib --enable-cplusplus --disable-threads
-    [ $? -eq 0 ] || exit 1
-$MAKE && sudo $MAKE install
-fi
+# if [ ! -f /usr/include/gc.h ]; then
+#     echo "Gc library is not install, install it ......"
+#     sudo rm -rf /tmp/gc-7.1
+#     tar xfz $PKG_PATH/gc-7.1.tar.gz -C /tmp
+#     cd /tmp/gc-7.1
+#     ./configure --prefix=/usr --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --mandir=/usr/share/man --infodir=/usr/share/info --datadir=/usr/share --sysconfdir=/etc --localstatedir=/var/lib --enable-cplusplus --disable-threads
+#     [ $? -eq 0 ] || exit 1
+# $MAKE && sudo $MAKE install
+# fi
 
 # Install w3m
 test=`which w3m`
