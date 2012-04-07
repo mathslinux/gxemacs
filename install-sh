@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-04-06-14:30:39 星期五 by geniux>
+# Time-stamp: <2012-04-07-14:28:30 星期六 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -204,9 +204,13 @@ sudo cp $APP_PATH/pycomplete.py $PYTHON_MODULE_PATH
 mkdir -p $TARGET_SITE_LISP_PATH/share/emacs/site-lisp
 if [ ! -f $TARGET_SITE_LISP_PATH/share/emacs/site-lisp/jabber-autoloads.el ]; then
 	echo "Install emacs-jabber ......"
-	sudo rm -rf /tmp/emacs-jabber-0.8.0
-	tar xfj $PKG_PATH/emacs-jabber-0.8.0.tar.bz2 -C /tmp
-	cd /tmp/emacs-jabber-0.8.0
+	sudo rm -rf /tmp/emacs-jabber-20120206
+	tar xf $PKG_PATH/emacs-jabber-20120206.tar.gz -C /tmp
+	cd /tmp/emacs-jabber-20120206
+	aclocal 
+	autoconf 
+	libtoolize --copy --force --automake	
+	autoreconf --install 
 	./configure --prefix=$TARGET_SITE_LISP_PATH
 	[ $? -eq 0 ] || exit 1
 	$MAKE && $MAKE install
