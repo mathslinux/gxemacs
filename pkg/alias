@@ -1,0 +1,14 @@
+alias rm rm -i $*
+alias lt ls -ltr $*
+alias ls ls --color=auto $*
+alias ll ls -alF $*
+alias la ls -A $*
+alias hs history | grep --color $*
+alias h history $*
+alias grep grep --color $*
+alias go gnome-open $*
+alias du du -h $*
+alias dsp-app cd /usr/local/ezsdk/c6accel_2_01_00_03/soc/app $*
+alias dsp cd /usr/local/ezsdk $*
+alias df df -Th $*
+alias .. cd .. $*

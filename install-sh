@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-04-07-14:28:30 星期六 by geniux>
+# Time-stamp: <2012-04-22-00:42:56 星期日 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -352,3 +352,10 @@ if [ ! -d $TARGET_SITE_LISP_PATH/anything-config ]; then
 	cd $TARGET_SITE_LISP_PATH/anything-config
 	$MAKE
 fi
+
+################################################################################
+# Install eshell configuration files
+if [ ! -d $HOME/.eshell ]; then
+	mkdir -p $HOME/.eshell
+fi
+cp $PKG_PATH/alias $HOME/.eshell
