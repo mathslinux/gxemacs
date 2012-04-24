@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI config file
-;; Time-stamp: <2012-03-12-14:37:52 星期一 by geniux>
+;; Time-stamp: <2012-04-24-17:39:47 星期二 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Font setting
@@ -20,6 +20,16 @@
 	  (set-face-attribute
 	   'default nil :font "Monaco 12")
 	  ))
+
+(setq window-system-default-frame-alist
+      '(
+        ;; if frame created on x display
+        (x
+		 ;; mouse
+		 ;; face
+		 (font . "Monaco 12"))
+        ;; if on term
+        (nil)))
 
 
 ;; Theme setting
