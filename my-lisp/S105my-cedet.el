@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; cedet mode config file
 ;; See Config_CEDET.org for detail
-;; Time-stamp: <2012-03-13-17:01:11 星期二 by geniux>
+;; Time-stamp: <2012-04-24-15:22:30 星期二 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (load-file (concat site-lisp-path "cedet/common/cedet.el"))
@@ -32,7 +32,7 @@
 (global-semantic-idle-local-symbol-highlight-mode 1)
 ;;(global-which-function-mode)
 ;; (semantic-load-enable-semantic-debugging-helpers)
-(global-semantic-highlight-edits-mode 1)
+;; (global-semantic-highlight-edits-mode 1)
 
 ;; Code fold
 (global-semantic-tag-folding-mode 1)
