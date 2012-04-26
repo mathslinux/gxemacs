@@ -34,9 +34,35 @@ PYTHON_MAJOR_VERSION=`python --version 2>&1 | cut -b8`
 # Now check whether all conditions are met.
 echo "Checking whether all conditions are met ......"
 if [ $PYTHON_MAJOR_VERSION -ne 2 ]; then
-	echo "Sorry, only python2 is support now, exit ......"
-	exit 1
+    echo "Sorry, only python2 is support now, exit ......"
+    echo "Exit"
+    exit 1
 fi
+
+has() {
+    type "$1" >/dev/null 2>&1
+}
+
+if ! has aclocal; then
+    echo "No aclocal found, please install it"
+    exit 1
+fi
+
+if ! has autoconf; then
+    echo "No autoconf found, please install it"
+    exit 1
+fi
+
+if ! has libtoolize; then
+    echo "No libtoolize found, please install it"
+    exit 1
+fi
+
+if ! has autoreconf; then
+    echo "No autoreconf found, please install it"
+    exit 1
+fi
+
 # test=`which hg`
 # if [ $? -ne 0 ]; then
 #     echo "Mercurial must be installed, please install it and go on"
