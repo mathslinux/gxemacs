@@ -63,6 +63,16 @@ if ! has autoreconf; then
     exit 1
 fi
 
+if ! has easy_install; then
+    echo "No python setuptools found, please install it"
+    exit 1
+fi
+
+if ! has makeinfo; then
+    echo "No texinfo found, please install it"
+    exit 1
+fi
+
 # test=`which hg`
 # if [ $? -ne 0 ]; then
 #     echo "Mercurial must be installed, please install it and go on"
