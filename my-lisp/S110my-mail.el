@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mail config file
-;; Time-stamp: <2012-05-08-18:10:14 星期二 by geniux>
+;; Time-stamp: <2012-05-08-18:50:22 星期二 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; TODO
@@ -41,3 +41,8 @@
 
 ;; Sort threads by the date of the root node.
 (setq gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date))
+
+;; Support view html in email content
+;; And if you want to really do this, please rename K102my-brower.el
+;; in ~/.emacs.d/my-lisp/ to K102my-brower.el and install emacs-w3m package
+(setq mm-text-html-renderer 'w3m)
