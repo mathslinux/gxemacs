@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mail config file
-;; Time-stamp: <2012-05-08-17:41:38 星期二 by geniux>
+;; Time-stamp: <2012-05-08-18:10:14 星期二 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; TODO
@@ -38,3 +38,6 @@
 (setq user-full-name "mathslinux")
 (setq user-mail-address "riegamaths@gmail.com")
 (setq message-signature-file (concat temporary-path "/signature.file"))
+
+;; Sort threads by the date of the root node.
+(setq gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date))
