@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mail config file
-;; Time-stamp: <2012-05-08-18:50:22 星期二 by geniux>
+;; Time-stamp: <2012-05-09-16:09:30 星期三 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; TODO
@@ -46,3 +46,32 @@
 ;; And if you want to really do this, please rename K102my-brower.el
 ;; in ~/.emacs.d/my-lisp/ to K102my-brower.el and install emacs-w3m package
 (setq mm-text-html-renderer 'w3m)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; BBDB setting
+(add-to-list 'load-path (concat site-lisp-path "/bbdb"))
+(require 'bbdb)
+
+;; Initialize BBDB support for the gnus
+(bbdb-initialize 'gnus 'message)
+
+;; Set bbdb data file path
+(setq bbdb-file "~/Dropbox/Temporary/bbdb/.bbdb")
+
+;; Automatically add contact address
+(setq bbdb/news-auto-create-p t)
+
+;; Dont check whether phone number fit with North America format
+(setq bbdb-north-american-phone-numbers-p nil)
+
+;; Tell bbdb my email address
+(setq bbdb-user-mail-names
+	  (regexp-opt '("riegamaths@gmail.com" "hdrmajia@gmail.com")))
+
+;; Cyrling when complete email address
+(setq bbdb-complete-name-allow-cycling t)
+
+;; Other settings
+;; (setq bbdb-use-pop-up nil)

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-04-22-00:42:56 星期日 by geniux>
+# Time-stamp: <2012-05-09-16:17:52 星期三 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -395,3 +395,18 @@ if [ ! -d $HOME/.eshell ]; then
 	mkdir -p $HOME/.eshell
 fi
 cp $PKG_PATH/alias $HOME/.eshell
+
+
+################################################################################
+# Install BBDB
+BBDB_VERSION=2.35
+if [ ! -d $TARGET_SITE_LISP_PATH/bbdb ]; then
+	mkdir -p $TARGET_SITE_LISP_PATH/bbdb
+	echo "Install bbdb ......"
+	tar xf $PKG_PATH/bbdb-$BBDB_VERSION.tar.gz -C /tmp
+	cd /tmp/bbdb-$BBDB_VERSION
+	./configure
+	[ $? -eq 0 ] || exit 1
+	$MAKE
+	cp -dfr lisp/* $TARGET_SITE_LISP_PATH/bbdb
+fi
