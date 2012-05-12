@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c mode config file ;;
-;; Time-stamp: <2011-12-13-10:43:27 Tuesday by geniux>
+;; Time-stamp: <2012-05-12-12:41:13 星期六 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'cc-mode)
@@ -38,6 +38,7 @@
 (defun gx-c-mode()
   (interactive)
   (c-set-style "linux")
+  (setq indent-tabs-mode nil)
   ;;(c-toggle-auto-state)
   (c-toggle-hungry-state)
   (setq c-basic-offset 4)
