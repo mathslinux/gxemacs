@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c mode config file ;;
-;; Time-stamp: <2012-05-12-12:41:13 星期六 by geniux>
+;; Time-stamp: <2012-07-04-23:21:37 星期三 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'cc-mode)
@@ -34,6 +34,10 @@
 
 (add-hook 'c-mode-hook 'gx-mode-auto-pair)
 (add-hook 'c++-mode-hook 'gx-mode-auto-pair)
+
+(defun set-newline-and-no-indent ()
+  (local-set-key (kbd "RET") 'newline))
+(add-hook 'c-mode-hook 'set-newline-and-no-indent)
 
 (defun gx-c-mode()
   (interactive)
