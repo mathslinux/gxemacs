@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mail config file
-;; Time-stamp: <2012-05-09-16:09:30 星期三 by geniux>
+;; Time-stamp: <2012-06-04-14:03:57 星期一 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; TODO
@@ -35,7 +35,7 @@
 				  ;; machine imap.gmail.com login your-email-account password your-password port 993
  				  (nnimap-authinfo-file "~/.emacs.d/temporary/.imap-authinfo")
  				  (nnimap-stream ssl)))
-(setq user-full-name "mathslinux")
+(setq user-full-name "Dunrong Huang")
 (setq user-mail-address "riegamaths@gmail.com")
 (setq message-signature-file (concat temporary-path "/signature.file"))
 
@@ -74,4 +74,7 @@
 (setq bbdb-complete-name-allow-cycling t)
 
 ;; Other settings
+(setq erc-ignore-list nil)
+(setq erc-hide-list
+      '("JOIN" "QUIT"))
 ;; (setq bbdb-use-pop-up nil)
