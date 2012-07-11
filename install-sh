@@ -341,22 +341,6 @@ if [ ! -f $TARGET_SITE_LISP_PATH/share/emacs/site-lisp/doxymacs.el ]; then
 fi
 
 ################################################################################
-# Install org-mode 
-mkdir -p $TARGET_SITE_LISP_PATH/share/emacs/site-lisp
-if [ ! -f $TARGET_SITE_LISP_PATH/share/emacs/site-lisp/org.el ]; then
-	echo "Install org-mode ......"
-	sudo rm -rf /tmp/org-7.7
-	tar xfz $PKG_PATH/org-7.7.tar.gz -C /tmp
-	cd /tmp/org-7.7
-	$MAKE prefix=$TARGET_SITE_LISP_PATH && $MAKE prefix=$TARGET_SITE_LISP_PATH install
-fi
-
-# Config for erc
-if [ ! -f $HOME/.ercpass  ]; then
-	touch $HOME/.ercpass
-fi
-
-################################################################################
 # Install git-emacs
 GIT_EMACS_VERSION=20120129
 if [ ! -d $TARGET_SITE_LISP_PATH/git-emacs ]; then
