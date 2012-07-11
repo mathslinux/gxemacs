@@ -258,8 +258,9 @@ a plist.  In XEmacs, the alist is deprecated; a plist is used instead."
 	 plist)
 	((not (symbolp (car plist)))
 	 (error "Wrong type argument: plist, %S" plist))
-	(t
-	 (plist-to-alist plist)))); XEmacs only
+	;; (t
+	;;  (plist-to-alist plist))
+	)); XEmacs only
 
 ;; Customization
 
