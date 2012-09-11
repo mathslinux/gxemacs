@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; utils config file ;;
-;; Time-stamp: <2011-11-10-10:29:05 星期四 by geniux>
+;; Time-stamp: <2012-08-12-20:14:26 星期日 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 
 ;; Cutting and pasting uses the clipboard
@@ -16,6 +16,13 @@
 (setq time-stamp-active t)
 (setq time-stamp-format "%04y-%02m-%02d-%02H:%02M:%02S %:a by geniux")
 (add-hook 'before-save-hook 'time-stamp)
+
+;; Display time
+(display-time-mode 1)
+;; Time should be displayed as hh:mm, 0 <= hh <= 23
+(setq display-time-24hr-format t)
+;; Display day and date
+(setq display-time-day-and-date t)
 
 ;; Automatic reload file when the file changes on disk.
 (global-auto-revert-mode t)
