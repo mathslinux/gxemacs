@@ -1,5 +1,5 @@
 #!/bin/sh
-# Time-stamp: <2012-05-09-16:17:52 星期三 by geniux>
+# Time-stamp: <2013-01-23-19:42:19 星期三 by geniux>
 
 ################################################################################
 # @file   install-sh
@@ -393,4 +393,14 @@ if [ ! -d $TARGET_SITE_LISP_PATH/bbdb ]; then
 	[ $? -eq 0 ] || exit 1
 	$MAKE
 	cp -dfr lisp/* $TARGET_SITE_LISP_PATH/bbdb
+fi
+
+################################################################################
+# Install magit
+MAGIT_VERSION=1.2.0
+if [ ! -d $TARGET_SITE_LISP_PATH/share/emacs/site-lisp/magit.el ]; then
+	echo "Install magit ......"
+	tar xfz $PKG_PATH/magit-$MAGIT_VERSION.tar.gz -C /tmp
+	cd /tmp/magit-$MAGIT_VERSION
+	$MAKE && $MAKE install PREFIX=$TARGET_SITE_LISP_PATH
 fi
