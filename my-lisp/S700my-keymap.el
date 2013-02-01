@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key map config file ;;
-;; Time-stamp: <2012-03-19-10:51:14 星期一 by geniux>
+;; Time-stamp: <2012-10-12-16:34:25 星期五 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; close current buffer
@@ -98,6 +98,14 @@
 
 
 ;; 退出gdb的时候关闭gdb对应的buffer
+(defun kill-buffer-when-shell-command-exit () 
+  "Close current buffer when `shell-command' exit." 
+  (let ((process (ignore-errors (get-buffer-process (current-buffer))))) 
+	(when process 
+	  (set-process-sentinel process 
+							(lambda (proc change) 
+							  (when (string-match "\\(finished\\|exited\\)" change) 
+								(kill-buffer (process-buffer proc))))))))
 (add-hook 'gdb-mode-hook 'kill-buffer-when-shell-command-exit)
 
 ;; 显示gdb的鼠标提示
