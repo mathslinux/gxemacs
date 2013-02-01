@@ -1,17 +1,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; cedet mode config file
 ;; See Config_CEDET.org for detail
-;; Time-stamp: <2012-04-24-15:22:30 星期二 by geniux>
+;; Time-stamp: <2013-02-01-19:30:28 星期五 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(load-file (concat site-lisp-path "cedet/common/cedet.el"))
-(require 'semantic-ia)
+(semantic-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Semantic configure
 
 ;; For C/C++
-(require 'semantic-gcc)
+(semantic-gcc-setup)
 (defconst cedet-user-include-dirs
   (list ".." "../include" "../.." "../../include"))
 ;; FIXME
@@ -21,8 +20,17 @@
 		(semantic-add-system-include dir 'c-mode))
 	  cedet-user-include-dirs)
 
-(semantic-load-enable-minimum-features)
-(semantic-load-enable-code-helpers)
+(global-semantic-idle-scheduler-mode 1)
+(global-semanticdb-minor-mode 1)
+
+;;(semantic-load-enable-code-helpers)
+(setq semantic-idle-work-update-headers-flag t)
+(global-semantic-idle-summary-mode 1)
+(global-semantic-mru-bookmark-mode 1)
+;; Do this last.  This allows other minor modes to get loaded
+;; in so they appear in the menu properly.
+;; (global-senator-minor-mode 1)
+
 ;;(semantic-load-enable-guady-code-helpers)
 (global-semantic-decoration-mode 1)
 ;;(global-semantic-decoration-on-includes)
@@ -35,10 +43,8 @@
 ;; (global-semantic-highlight-edits-mode 1)
 
 ;; Code fold
-(global-semantic-tag-folding-mode 1)
 
 ;; Semantic configure
-(require 'semanticdb)
 (global-semanticdb-minor-mode 1)
 (setq semanticdb-default-save-directory (concat temporary-path "semanticdb/"))
 

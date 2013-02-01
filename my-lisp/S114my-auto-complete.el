@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto-complete config file ;;
-;; Time-stamp: <2012-03-14-15:36:33 星期三 by geniux>
+;; Time-stamp: <2012-07-11-17:43:00 星期三 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defconst auto-complete-path (concat site-lisp-path "auto-complete"))
@@ -21,7 +21,7 @@
 ;; For semantic backend.
 (add-hook 'c-mode-common-hook
 		  (lambda ()
-			(local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)))
+			(local-set-key [(control return)] 'semantic-ia-complete-symbol)))
 
 (defun ac-complete-semantic-self-insert (arg)
     (interactive "p")
