@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org-mode config file ;;
-;; Time-stamp: <2012-08-21-10:02:17 星期二 by geniux>
+;; Time-stamp: <2013-02-01-19:35:21 星期五 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-to-list 'load-path (concat site-lisp-path "share/emacs/site-lisp/"))
@@ -80,7 +80,6 @@
 
 ;; 给已完成事项打上时间戳。可选 note，附加注释
 ;; (setq org-log-done 'time)
-(setq org-log-done t)
 
 ;;设置Remember 模板
 (require 'remember)
