@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; utils config file ;;
-;; Time-stamp: <2013-02-01-19:19:19 星期五 by geniux>
+;; Time-stamp: <2013-02-01-19:24:52 星期五 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 
 ;; Cutting and pasting uses the clipboard
@@ -86,6 +86,7 @@
 (mouse-avoidance-mode 'animate)
 
 ;; 当有两个文件名相同的缓冲时, 使用前缀的目录名做 buffer 名字.
+(require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
 ;; C-k delete the line
