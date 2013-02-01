@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Instant Messaging config file ;;
-;; Time-stamp: <2012-05-09-10:53:16 星期三 by geniux>
+;; Time-stamp: <2013-02-01-19:39:37 星期五 by geniux>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; emacs-jabber
@@ -54,7 +54,8 @@
 (setq erc-autojoin-channels-alist '(("freenode.net"
                                      "#ubuntu-cn" "#gentoo-cn"
                                      "#emacs" "#lisp" "#python")
-                                    ("oftc.net" "#arch-cn" "#qemu" "#ovirt" "emacs-cn")))
+                                    ("oftc.net" "#arch-cn" "#qemu" "#ovirt" "emacs-cn")
+									("gimp.org" "#spice")))
 
 ;; Channel specific prompt
 (setq erc-prompt (lambda ()
@@ -78,8 +79,9 @@
 (defun erc-start ()
   (interactive)
   (erc :server "irc.freenode.net" :port 6667 :nick "mathslinux" :password freenode-pass)
-  ;; (erc-ssl :server "irc.oftc.net" :port 6667 :nick "mathslinux" :password oftc-pass)) 
-  (erc :server "irc.oftc.net" :port 6667 :nick "mathslinux" :password oftc-pass))
+  (erc :server "irc.oftc.net"  :port 7000 :nick "dunrong"    :password oftc-pass)
+  (erc :server "192.168.0.200" :port 6667 :nick "mathslinux" :password "cloudtimes")
+  (erc :server "irc.gimp.org"  :port 7000 :nick "dunrong" :password ""))
 
 ;; Enable log
 (require 'erc-log)
